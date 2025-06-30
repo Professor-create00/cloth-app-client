@@ -19,7 +19,7 @@ const EditProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`/api/products/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
         setForm({
           name: res.data.name,
           material:res.data.material,
@@ -57,7 +57,7 @@ const EditProduct = () => {
     }
 
     try {
-      await axios.put(`/api/products/${id}`, data);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/products/${id}`, data);
       setSuccess(true);
       setTimeout(() => navigate("/admin"), 1500);
     } catch (error) {

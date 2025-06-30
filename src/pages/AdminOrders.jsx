@@ -1,102 +1,4 @@
 
-// import { useEffect, useState } from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
-// import axios from "axios";
-// import Navbar from "../components/Navbar";
-
-// const AdminOrders = () => {
-//   const [orders, setOrders] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const navigate = useNavigate();
-//   const location = useLocation();
-
-//   useEffect(() => {
-//     const token = localStorage.getItem("token");
-//     const username = localStorage.getItem("username");
-
-//     if (!token || username !== "admin") {
-//       navigate("/admin/orders", { state: { from: location.pathname } });
-//       return;
-//     }
-
-//     const fetchOrders = async () => {
-//       console.log("📡 Fetching orders...");
-//       try {
-//         const res = await axios.get("/api/orders");
-//         console.log("✅ Orders response:", res.data);
-//         setOrders(res.data);
-//       } catch (err) {
-//         console.error("❌ Failed to fetch orders", err);
-//       } finally {
-//         console.log("⏹ Finished loading");
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchOrders();
-//   }, [navigate, location.pathname]);
-
-//   const handleDelete = async (id) => {
-//       await axios.delete(`/api/orders/${id}`);
-//       setOrders(prev => prev.filter(order => order._id !== id));
-//   };
-
-//   return (
-//     <>
-//       <Navbar />
-//       <div className="max-w-6xl mx-auto px-4 py-10">
-//         <div className="flex justify-between items-center mb-6">
-//           <h2 className="text-3xl font-bold text-gray-800">All Orders</h2>
-//         </div>
-//         {loading ? (
-//           <p>Loading orders...</p>
-//         ) : orders.length === 0 ? (
-//           <p>No orders found.</p>
-//         ) : (
-//           <div className="overflow-x-auto">
-//             <table className="min-w-full bg-white border border-gray-200">
-//               <thead className="bg-gray-100 text-left">
-//                 <tr>
-//                   <th className="p-3 border">Name</th>
-//                   <th className="p-3 border">Phone</th>
-//                   <th className="p-3 border">Address</th>
-//                   <th className="p-3 border">Product</th>
-//                   <th className="p-3 border">Time</th>
-//                   <th className="p-3 border">Action</th>
-//                 </tr>
-//               </thead>
-//               <tbody>
-//                 {orders.map((order) => (
-//                   <tr key={order._id} className="border-t hover:bg-gray-50">
-//                     <td className="p-3 border">{order.name}</td>
-//                     <td className="p-3 border">{order.phone}</td>
-//                     <td className="p-3 border">{order.address}</td>
-//                     <td className="p-3 border">{order.productName}</td>
-//                     <td className="p-3 border">{new Date(order.createdAt).toLocaleString()}</td>
-//                     <td className="p-3 border">
-//                       <button
-//                         onClick={() => handleDelete(order._id)}
-//                         className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
-//                       >
-//                         Delete
-//                       </button>
-//                     </td>
-//                   </tr>
-//                 ))}
-//               </tbody>
-//             </table>
-//           </div>
-//         )}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default AdminOrders;
-
-
-
-
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -120,7 +22,7 @@ const AdminOrders = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("/api/orders");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders`);
         setOrders(res.data);
       } catch (err) {
         console.error("Failed to fetch orders", err);
@@ -134,7 +36,7 @@ const AdminOrders = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/orders/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/orders/${id}`);
       setOrders(prev => prev.filter(order => order._id !== id));
       setDeleteConfirm(null);
     } catch (err) {

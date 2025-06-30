@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("/api/products");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
         setProducts(res.data);
         setFilteredProducts(res.data);
         
@@ -49,15 +49,16 @@ const AdminDashboard = () => {
     setFilteredProducts(result);
   }, [selectedCategory, searchQuery, products]);
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/products/${id}`);
-      setProducts((prev) => prev.filter((p) => p._id !== id));
-      setDeleteConfirm(null);
-    } catch (err) {
-      console.error("Failed to delete product", err);
-    }
-  };
+const handleDelete = async (id) => {
+  try {
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
+    setProducts((prev) => prev.filter((p) => p._id !== id));
+    setDeleteConfirm(null);
+  } catch (err) {
+    console.error("Failed to delete product", err);
+  }
+};
+
 
   return (
     <>
