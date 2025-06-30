@@ -15,7 +15,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/products/${id}`);
         setProduct(res.data);
         setSelectedImage(res.data.image[0]);
       } catch (err) {
@@ -34,7 +34,7 @@ const ProductDetails = () => {
     e.preventDefault();
     setOrderStatus('processing');
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/orders`, {
+      await axios.post(`${import.meta.env.VITE_API_URL}api/orders`, {
         ...formData,
         productId: product._id,
         productName: product.name,
