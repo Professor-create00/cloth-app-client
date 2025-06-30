@@ -1,8 +1,8 @@
-
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+
 const HeroVideo = () => {
   const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -21,7 +21,6 @@ const HeroVideo = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
- 
       video.src = isMobile ? "/videos/mobilevideo.mp4" : "/videos/video1.mp4";
       video.load();
 
@@ -150,6 +149,18 @@ const Section = ({ title, items, link }) => {
   );
 };
 
+const Footer = () => {
+  return (
+    <footer className="bg-gray-800 text-white py-6">
+      <div className="container mx-auto px-4 text-center">
+        <p className="text-sm">
+          Made with ❤️ and ☕ by Lakhan Sharan
+        </p>
+      </div>
+    </footer>
+  );
+};
+
 const HomePage = () => {
   const [products, setProducts] = useState({});
 
@@ -178,10 +189,10 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-red-50">
+    <div className="min-h-screen bg-red-50 flex flex-col">
       <Navbar />
       <HeroVideo />
-      <div className="max-w-7xl mx-auto py-8">
+      <div className="max-w-7xl mx-auto py-8 flex-grow">
         {products["Saree"] && (
           <Section title="Handloom Saree Collection" items={products["Saree"]} link="/sarees" />
         )}
@@ -198,6 +209,7 @@ const HomePage = () => {
           <Section title="Zero Preservative Masalas" items={products["Masala"]} link="/organic-masalas" />
         )}
       </div>
+      <Footer />
     </div>
   );
 };
