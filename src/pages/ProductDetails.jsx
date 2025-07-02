@@ -17,7 +17,7 @@ const ProductDetails = () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}api/products/${id}`);
         setProduct(res.data);
-        setSelectedImage(res.data.image[0]);
+        setSelectedImage(res.data.images[0]);
       } catch (err) {
         console.error("Error fetching product details", err);
       }
@@ -66,7 +66,7 @@ const ProductDetails = () => {
           />
 
           <div className="flex gap-2 mt-4">
-            {product.image.map((img, idx) => (
+            {product.images.map((img, idx) => (
               <button
                 key={idx}
                 onClick={() => setSelectedImage(img)}
