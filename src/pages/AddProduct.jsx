@@ -43,7 +43,7 @@ const AddProduct = () => {
   }
 
   try {
-    await axios.post(`${import.meta.env.VITE_API_URL}/api/products`, data);
+    await axios.post(`${import.meta.env.VITE_API_URL}api/products`, data);
 
     setSuccess(true);
     setTimeout(() => navigate("/admin"), 1500); // redirect after 1.5s
