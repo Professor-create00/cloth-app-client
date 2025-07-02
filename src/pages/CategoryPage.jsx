@@ -21,7 +21,7 @@ const CategoryPage = () => {
     const fetchProducts = async () => {
       try {
         const queryCategory = formatQuery(category);
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}api/products?category=${queryCategory}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products?category=${queryCategory}`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching category products", error);
@@ -38,7 +38,7 @@ const CategoryPage = () => {
     const name = lowered.replace(/(?:under|below)\s*\d+/, "").trim();
 
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}api/products`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`, {
         params: {
           category: queryCategory,
           search: name || undefined,
@@ -47,6 +47,7 @@ const CategoryPage = () => {
       });
       setProducts(response.data);
     } catch (error) {
+     
       console.error("Error fetching filtered products", error);
     }
   };

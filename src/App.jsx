@@ -19,18 +19,17 @@ function App() {
     
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/:category" element={<CategoryPage />} />
-
-        <Route path="/admin/orders" element={
+     
+        <Route path="/admin" element={
+          <PrivateRoute>
+            <AdminDashboard />
+          </PrivateRoute>
+          } />
+             <Route path="/admin/orders" element={
           <PrivateRoute>
                 <AdminOrders />
           </PrivateRoute>
       } />
-        <Route path="/admin" element={
-          <PrivateRoute>
-
-            <AdminDashboard />
-          </PrivateRoute>
-          } />
         <Route path="/admin/add" element={
           <PrivateRoute>
 

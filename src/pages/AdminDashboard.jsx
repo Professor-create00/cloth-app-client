@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -16,7 +15,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/products`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
         setProducts(res.data);
         setFilteredProducts(res.data);
         
@@ -51,7 +50,7 @@ const AdminDashboard = () => {
 
 const handleDelete = async (id) => {
   try {
-    await axios.delete(`${import.meta.env.VITE_API_URL}api/products/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/products/${id}`);
     setProducts((prev) => prev.filter((p) => p._id !== id));
     setDeleteConfirm(null);
   } catch (err) {
