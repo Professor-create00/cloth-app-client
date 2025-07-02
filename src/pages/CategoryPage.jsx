@@ -93,10 +93,10 @@ const CategoryPage = () => {
                 className="group transition-transform duration-200 hover:-translate-y-1"
               >
                 <div className="bg-[#F3F7EC] rounded-lg overflow-hidden shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300 h-full flex flex-col">
-                  {item.image && item.image.length > 0 ? (
+                  {item.images && item.images.length > 0 ? (
                     <div className="relative pt-[120%] overflow-hidden m-4">
                       <img
-                        src={item.image[0]}
+                        src={item.images[0]}
                         alt={item.name}
                         className="absolute rounded-lg top-0 left-0 w-[calc(100%-8px)] h-[calc(100%-8px)] m-1 object-cover group-hover:scale-105 transition-transform duration-500"
                       />

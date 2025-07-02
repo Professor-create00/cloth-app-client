@@ -79,10 +79,10 @@ const Section = ({ title, items, link }) => {
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group h-full">
-              {item.image && item.image.length > 0 ? (
+              {item.images && item.images.length > 0 ? (
                 <div className="relative overflow-hidden rounded-lg aspect-[3/4]">
                   <img
-                    src={item.image[0]}
+                    src={item.images[0]}
                     alt={item.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -119,10 +119,10 @@ const Section = ({ title, items, link }) => {
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group h-full">
-              {item.image && item.image.length > 0 ? (
+              {item.images && item.images.length > 0 ? (
                 <div className="relative overflow-hidden rounded-lg aspect-[3/4]">
                   <img
-                    src={item.image[0]}
+                    src={item.images[0]}
                     alt={item.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
