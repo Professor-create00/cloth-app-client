@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 const AddProduct = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-
   const [form, setForm] = useState({
     name: "",
     price: "",
@@ -15,9 +14,7 @@ const AddProduct = () => {
     material:"", 
     images: [],
   });
-
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -38,8 +35,8 @@ const AddProduct = () => {
   data.append("size", form.size);
   data.append("category", form.category);
   data.append("material",form.material); // newly added
-  for (let i = 0; i < form.image.length; i++) {
-    data.append("image", form.image[i]);
+  for (let i = 0; i < form.images.length; i++) {
+    data.append("image", form.images[i]);
   }
 
   try {
