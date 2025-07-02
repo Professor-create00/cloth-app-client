@@ -21,7 +21,7 @@ const AdminOrders = () => {
     }
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}api/orders`);
         setOrders(res.data);
       } catch (err) {
         console.error("Failed to fetch orders", err);
@@ -35,7 +35,7 @@ const AdminOrders = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/orders/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}api/orders/${id}`);
       setOrders(prev => prev.filter(order => order._id !== id));
       setDeleteConfirm(null);
     } catch (err) {

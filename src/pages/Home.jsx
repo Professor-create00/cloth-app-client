@@ -169,7 +169,7 @@ const HomePage = () => {
 
         const fetched = {};
         for (const cat of categories) {
-          const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/products?category=${cat}`);
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}api/products?category=${cat}`);
           fetched[cat] = res.data;
         }
         setProducts(fetched);
